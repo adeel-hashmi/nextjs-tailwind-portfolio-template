@@ -57,7 +57,7 @@ Feature suggestions are welcome! Please:
 
 ### Prerequisites
 
-- A maintained Node.js LTS release compatible with the pinned Next.js version
+- Node.js 22 or 24 and Chrome for local Lighthouse checks
 - npm
 - Read the [local setup](README.md#local-setup) and [verified check results](README.md#verified-checks--2026-10-20) before installing
 - Git
@@ -84,9 +84,11 @@ Feature suggestions are welcome! Please:
    ```bash
    npm run type-check
    npm run lint
+   npm test
    npm run build
+   npm run lighthouse
    ```
-   There is no `test` script. ESLint setup is incomplete and build-time linting is skipped; TypeScript validation is enforced during the build. Record actual failures rather than claiming all checks pass. See [commands and checks](README.md#commands-and-checks).
+   Linting and TypeScript validation are enforced during the build. Notification tests use Node's built-in runner; Lighthouse requires Chrome and keeps its reports local. Record actual failures rather than claiming all checks pass. See [commands and checks](README.md#commands-and-checks).
 
 ## Pull Request Process
 

@@ -290,7 +290,7 @@ export default function Home() {
                 >
                   <Button className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-primary/25 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
                     <Sparkles className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                    Let's Build Something Amazing
+                    Let&apos;s Build Something Amazing
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
 
@@ -327,7 +327,7 @@ export default function Home() {
                     { icon: Github, href: "https://github.com/adeelhashmi", label: "GitHub" },
                     { icon: Linkedin, href: "https://linkedin.com/in/adeelhashmi", label: "LinkedIn" },
                     { icon: Mail, href: "mailto:adeel.hashmi@example.com", label: "Email" },
-                  ].map(({ icon: Icon, href, label }, index) => (
+                  ].map(({ icon: Icon, href, label }) => (
                     <motion.a
                       key={label}
                       href={href}
@@ -359,7 +359,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold">About</h2>
             <div className="text-muted-foreground space-y-4 leading-relaxed">
               <p>
-                👋 Hi, I'm Adeel — a senior frontend engineer who transforms complex business requirements into
+                👋 Hi, I&apos;m Adeel — a senior frontend engineer who transforms complex business requirements into
                 intuitive user experiences. My code powers applications used by{" "}
                 <span className="text-foreground font-semibold">100K+ users daily</span> across logistics, government,
                 and SaaS platforms.
@@ -397,7 +397,7 @@ export default function Home() {
                 >
                   Germany/EU/UK/Canada
                 </Link>
-                . Let's build something amazing together.
+                . Let&apos;s build something amazing together.
               </p>
             </div>
           </motion.section>
@@ -535,9 +535,9 @@ export default function Home() {
           >
             <h2 className="text-2xl font-bold">Ready to Start Your Project?</h2>
             <p className="text-muted-foreground">
-              I'm always open to discussing new opportunities and exciting projects. Let's build something amazing
+              I&apos;m always open to discussing new opportunities and exciting projects. Let&apos;s build something amazing
               together!
-            </p>
+                 </p>
             <div className="flex flex-wrap gap-4">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
                 <Mail className="w-4 h-4 mr-2" />

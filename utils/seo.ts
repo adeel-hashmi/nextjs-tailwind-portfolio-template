@@ -133,10 +133,9 @@ export function generateBreadcrumbStructuredData(items: Array<{ name: string; ur
 /**
  * Generate social sharing URLs
  */
-export function generateSocialShareUrls(url: string, title: string, description?: string) {
+export function generateSocialShareUrls(url: string, title: string) {
   const encodedUrl = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)
-  const encodedDescription = encodeURIComponent(description || "")
 
   return {
     twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,

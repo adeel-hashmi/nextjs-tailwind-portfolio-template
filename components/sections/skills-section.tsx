@@ -68,7 +68,7 @@ export function SkillsSection() {
             animate={isInView ? "visible" : "hidden"}
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
           >
-            {skills.map((skill, index) => (
+            {skills.map((skill) => (
               <motion.div key={skill.name} variants={itemVariants}>
                 <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-105">
                   <CardContent className="p-4 text-center">

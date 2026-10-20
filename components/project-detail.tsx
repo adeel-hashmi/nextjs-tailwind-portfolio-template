@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowLeft, ExternalLink, Github, Calendar, Users, User } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -62,7 +63,9 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             </div>
 
             <div className="mb-12">
-              <img
+              <Image
+                  width={1200}
+                  height={600}
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}
                 className="w-full rounded-lg shadow-lg"
@@ -172,7 +175,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             <div className="mt-16 text-center">
               <h3 className="text-2xl font-bold mb-4">Interested in working together?</h3>
               <p className="text-muted-foreground mb-6">
-                I'm always open to discussing new opportunities and exciting projects.
+                I&apos;m always open to discussing new opportunities and exciting projects.
               </p>
               <Link href="/#contact">
                 <Button size="lg">Get in Touch</Button>

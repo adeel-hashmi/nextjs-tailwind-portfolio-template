@@ -18,7 +18,7 @@ The preview is a supplied asset, not evidence that the current revision has pass
 
 ## Local setup
 
-Use Git, npm, and a maintained Node.js LTS release compatible with Next.js 15.5.25. Verification used Node.js 24.13.0 and npm 11.6.2. The installed Next.js package declares Node.js `^18.18.0 || ^19.8.0 || >=20.0.0`; this repository does not pin a runtime.
+Use Git, npm, and Node.js 22 or 24. These are the CI matrix versions. Verification used Node.js 24.13.0 and npm 11.6.2. The installed Next.js package declares Node.js `^18.18.0 || ^19.8.0 || >=20.0.0`; this repository does not pin a runtime.
 
 The calendar dependency uses `react-day-picker@8.10.1` with compatible `date-fns@3.6.0`. The complete npm lockfile records the resolved dependency tree. A clean install and production build were verified on 2026-10-20 with Node.js 24.13.0 and npm 11.6.2; see the check results below.
 
@@ -41,23 +41,27 @@ Use npm with the supplied `package-lock.json`; the previous settings-only pnpm s
 | --- | --- |
 | `npm run dev` | Start the Next.js development server |
 | `npm run type-check` | Run TypeScript separately; also enforced during the production build |
-| `npm run lint` | Run `next lint`; ESLint dependencies and configuration are not supplied in this checkout |
-| `npm run lint:fix` | Run `next lint --fix`, with the same setup limitation |
+| `npm run lint` | Run ESLint with Next.js Core Web Vitals and TypeScript rules; warnings fail the check |
+| `npm run lint:fix` | Apply ESLint fixes and fail on remaining warnings; this modifies files |
+| `npm test` | Run three notification behavior tests with the Node.js test runner |
+| `npm run lighthouse` | Check three local production pages in Chrome; requires a successful build |
 | `npm run format` | Format files with Prettier; this modifies files |
 | `npm run build` | Create the Next.js production build after dependencies are installed |
 | `npm run start` | Serve a successful production build with `next start` |
 
-There is no `test` script, configured bundle analyzer, or Husky hook setup. The former `analyze` script was removed because it called the removed `next export` command and an undeclared analyzer through `npx`.
+There is no configured bundle analyzer or Husky hook setup. The former `analyze` script was removed because it called the removed `next export` command and an undeclared analyzer through `npx`.
 
-The production build validates TypeScript; the former `ignoreBuildErrors` bypass was removed. `next.config.mjs` still skips ESLint during builds and disables image optimization. A successful build therefore does not establish lint cleanliness, optimized images, or production readiness. Run separate checks and report their actual results.
+The production build validates TypeScript; the former `ignoreBuildErrors` bypass was removed. Build-time linting is enabled as well; image optimization remains disabled. A successful build does not establish optimized images or production readiness. Run separate checks and report their actual results.
 
 ## Verified checks — 2026-10-20
 
-- `npm ci --ignore-scripts --no-audit --no-fund`: passed from an absent `node_modules` directory; installed 405 packages.
+- `npm ci --ignore-scripts --no-audit --no-fund`: passed with the updated lint/browser tooling dependency tree.
 - `npm ls date-fns react-day-picker --depth=1`: passed; the calendar shares date-fns 3.6.0 without a peer conflict.
-- `NEXT_TELEMETRY_DISABLED=1 npm run build`: passed; generated 13 static pages and the configured dynamic routes. Type validation is enabled; linting remains skipped. Warnings remain about missing `metadataBase` and workspace-root inference caused by a parent lockfile.
+- `NEXT_TELEMETRY_DISABLED=1 npm run build`: passed; generated 14 static pages and the configured dynamic routes. Type validation and linting are enabled. A warning remains about missing `metadataBase`; output-file tracing is scoped to this repository to avoid parent-lockfile inference.
+- `npm run lint`: passed with zero warnings; no lint rule is disabled. Generated output and the existing nested local worktree are excluded, while application sources remain included.
+- `npm test`: three behavior tests passed, covering newest-notification replacement, update preservation, and dismissal before removal for exit animation.
 - `npm run type-check -- --incremental false`: passed with zero diagnostics after typing the animation variants and deriving toast state from the component props. No TypeScript suppression or contract weakening was added.
-- `npm audit --json`: reported zero critical advisories after upgrading Next.js to 15.5.25. Nine high/moderate dependency findings remain (six high, three moderate), including a moderate finding attributed to Next.js. No forced audit upgrade was applied.
+- `npm audit --json`: reported zero critical advisories after upgrading Next.js to 15.5.25. The expanded development-tooling tree has 28 advisory entries (19 high, seven moderate, two low), including a moderate finding attributed to Next.js. These include transitive tooling dependencies; production and development findings still require separate review. No forced audit upgrade was applied.
 
 - Local production-server HTTP smoke checks passed for the homepage, a project detail page, a blog article, and the visits API. The migrated POST handler correctly excluded a bot request; an unknown project produced the framework's streamed not-found response. The local server was stopped afterward.
 
@@ -86,7 +90,7 @@ The previously documented `data/skills.ts` and `data/blog.ts` files do not exist
 - **Visitor counts:** [app/api/visits/route.ts](app/api/visits/route.ts) uses seeded, process-memory counters and a random daily increment. Counts reset with the process and do not represent reliable unique visitors or historical analytics.
 - **Feedback:** [app/api/feedback/route.ts](app/api/feedback/route.ts) validates a message, logs submitted data, and returns a demonstration success response. It does not persist feedback or deliver email. Do not submit sensitive information to this demo.
 - **Contact forms:** [components/contact-form.tsx](components/contact-form.tsx) calls `/api/contact`, but that route is absent. [components/sections/contact-section.tsx](components/sections/contact-section.tsx) simulates submission with a delay. Neither is evidence of message delivery; the active homepage uses contact links and a separate feedback form.
-- **Analytics:** helper functions call `window.gtag` or `window.plausible` only if those globals exist. No provider script is loaded by the inspected layout. No Lighthouse score, Core Web Vitals result, uptime, or security grade has been verified for this cleanup.
+- **Analytics:** helper functions call `window.gtag` or `window.plausible` only if those globals exist. No provider script is loaded by the inspected layout. Lighthouse records local lab reports for the configured routes; no general Core Web Vitals field result, uptime, or security grade is established.
 
 ## Framework security update
 
@@ -103,7 +107,11 @@ npm run start
 
 The current configuration uses Next.js server routes, including POST handlers. It does not set `output: 'export'` and does not produce an `out` directory for drag-and-drop static hosting. Static export would require a separate design change that removes or replaces unsupported server behavior; `next export` is not available in Next.js 14. See the official [deployment guide](https://nextjs.org/docs/14/app/building-your-application/deploying) and [static-export limitations](https://nextjs.org/docs/14/app/building-your-application/deploying/static-exports).
 
-Choose a host with Next.js server support only after a successful local build and integration review. No deployment is performed by these local commands. The existing workflow in [.github/workflows/ci.yml](.github/workflows/ci.yml) includes a Vercel production-deployment job on main, so review it before pushing or enabling its credentials. Its checks also reference `npm ci`, a missing `test` script, and a missing Lighthouse configuration; this cleanup does not establish passing CI or repair the deployment workflow.
+Choose a host with Next.js server support only after a successful local build and integration review. No deployment is performed by these local commands. The existing workflow in [.github/workflows/ci.yml](.github/workflows/ci.yml) includes a Vercel production-deployment job on main, so review it before pushing or enabling its credentials. The check job runs a locked install, type checking, linting, notification tests, and a build on Node.js 22 and 24. The Node.js 24 job also runs Lighthouse against the local homepage, project list, and blog index. Dependencies and actions are pinned by the lockfile and reviewed action revisions. No Lighthouse report is uploaded to temporary public storage.
+
+## Lighthouse scope
+
+Install Chrome locally and run `npm run build` followed by `npm run lighthouse`. Reports stay in ignored `.lighthouseci/`; no upload command is configured. The check fails on bad HTTP status, browser console errors, missing document title, missing HTML language, or missing viewport metadata across three pages. One lab run per URL records performance data without claiming a stable performance budget, complete accessibility, or Core Web Vitals field results. Review reports before agreeing to additional budgets.
 
 ## Contributing and license
 

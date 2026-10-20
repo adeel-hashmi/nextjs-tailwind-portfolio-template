@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import { headers } from "next/headers"
 
 // In production, you'd use a database. For demo, we'll use a simple counter
@@ -30,12 +30,10 @@ export async function GET() {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     const headersList = await headers()
     const userAgent = headersList.get("user-agent") || ""
-    const forwarded = headersList.get("x-forwarded-for")
-    const ip = forwarded ? forwarded.split(",")[0] : "unknown"
 
     // Simple bot detection
     const isBot = /bot|crawler|spider|crawling/i.test(userAgent)

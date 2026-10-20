@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -112,7 +113,9 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                 transition={{ delay: 0.3, duration: 0.8 }}
                 className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl"
               >
-                <img
+                <Image
+                  width={1200}
+                  height={600}
                   src={project.heroImage || "/placeholder.svg?height=600&width=1200&text=Project+Hero"}
                   alt={`${project.title} hero image`}
                   className="w-full h-auto"
@@ -327,7 +330,9 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                         transition={{ delay: index * 0.1 }}
                         className="relative rounded-lg overflow-hidden border border-border/50 hover:border-border transition-colors"
                       >
-                        <img
+                        <Image
+                  width={600}
+                  height={400}
                           src={image || "/placeholder.svg?height=400&width=600&text=Gallery+Image"}
                           alt={`${project.title} screenshot ${index + 1}`}
                           className="w-full h-auto"
@@ -349,9 +354,9 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
             >
               <h3 className="text-2xl font-bold mb-4">Interested in Working Together?</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                I'm always open to discussing new opportunities and exciting projects. Let's build something amazing
+                I&apos;m always open to discussing new opportunities and exciting projects. Let&apos;s build something amazing
                 together.
-              </p>
+                   </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link href="/#contact">
                   <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">

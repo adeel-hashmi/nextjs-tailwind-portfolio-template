@@ -50,8 +50,8 @@ const faqs = [
     answer: (
       <div className="space-y-4">
         <p className="text-muted-foreground leading-relaxed">
-          Yes! I'm actively seeking both remote opportunities and relocation positions. Here's my availability:
-        </p>
+          Yes! I&apos;m actively seeking both remote opportunities and relocation positions. Here&apos;s my availability:
+             </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
@@ -85,7 +85,7 @@ const faqs = [
     answer: (
       <div className="space-y-4">
         <p className="text-muted-foreground leading-relaxed">
-          I believe in transparent development and open-source contributions. Here's how you can explore my work:
+          I believe in transparent development and open-source contributions. Here&apos;s how you can explore my work:
         </p>
         <div className="space-y-3">
           <div className="flex items-start gap-3">
@@ -132,7 +132,7 @@ const faqs = [
     answer: (
       <div className="space-y-4">
         <p className="text-muted-foreground leading-relaxed">
-          I'm always excited to discuss new opportunities! Here are the best ways to reach me:
+          I&apos;m always excited to discuss new opportunities! Here are the best ways to reach me:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-3">
@@ -246,7 +246,7 @@ const faqs = [
           <span className="font-semibold text-green-600 dark:text-green-400">Available for new opportunities</span>
         </div>
         <p className="text-muted-foreground leading-relaxed">
-          I'm actively seeking my next role and can start immediately or work with your preferred timeline.
+          I&apos;m actively seeking my next role and can start immediately or work with your preferred timeline.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
@@ -342,7 +342,7 @@ export function FAQSection() {
         <div className="bg-muted/30 rounded-2xl p-8 border border-border/50">
           <h3 className="text-xl font-bold mb-2">Still have questions?</h3>
           <p className="text-muted-foreground mb-4">
-            I'd love to chat about your project and how I can help bring your vision to life.
+            I&apos;d love to chat about your project and how I can help bring your vision to life.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <button className="px-6 py-2 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">

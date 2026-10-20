@@ -46,7 +46,7 @@ export function ContactSection() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Let's Work Together</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Let&apos;s Work Together</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             <Card>
