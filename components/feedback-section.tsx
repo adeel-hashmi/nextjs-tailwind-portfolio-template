@@ -61,7 +61,7 @@ export function FeedbackSection() {
       } else {
         throw new Error("Failed to submit feedback")
       }
-    } catch (error) {
+    } catch {
       setStatus("error")
       toast({
         title: "Something went wrong",

@@ -1,5 +1,5 @@
 // Senior-level analytics tracking
-export const trackEvent = (eventName: string, properties?: Record<string, any>) => {
+export const trackEvent = (eventName: string, properties?: Record<string, unknown>) => {
   if (typeof window !== "undefined") {
     // Google Analytics 4
     if (window.gtag) {

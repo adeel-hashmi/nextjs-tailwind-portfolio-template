@@ -24,7 +24,7 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error }
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error("Portfolio Error:", error, errorInfo)
     // In production, send to error tracking service
     // trackError(error, errorInfo)
@@ -38,7 +38,7 @@ export class ErrorBoundary extends Component<Props, State> {
             <div className="text-center space-y-4 p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10">
               <AlertTriangle className="w-12 h-12 text-red-400 mx-auto" />
               <h2 className="text-2xl font-bold">Something went wrong</h2>
-              <p className="text-gray-400">Don't worry, this rarely happens in production!</p>
+              <p className="text-gray-400">Don&apos;t worry, this rarely happens in production!</p>
               <Button
                 onClick={() => this.setState({ hasError: false })}
                 className="bg-white text-black hover:bg-gray-200"

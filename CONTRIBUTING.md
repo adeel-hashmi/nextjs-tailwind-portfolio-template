@@ -2,7 +2,7 @@
 
 First off, thank you for considering contributing to this portfolio template! 🎉
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
 - [How Can I Contribute?](#how-can-i-contribute)
@@ -11,7 +11,7 @@ First off, thank you for considering contributing to this portfolio template! �
 - [Style Guidelines](#style-guidelines)
 - [Issue Guidelines](#issue-guidelines)
 
-## 📜 Code of Conduct
+## Code of Conduct
 
 This project and everyone participating in it is governed by our Code of Conduct. By participating, you are expected to uphold this code.
 
@@ -22,9 +22,9 @@ This project and everyone participating in it is governed by our Code of Conduct
 - **Be patient** with newcomers
 - **Focus on what's best** for the community
 
-## 🤝 How Can I Contribute?
+## How Can I Contribute?
 
-### 🐛 Reporting Bugs
+### Reporting Bugs
 
 Before creating bug reports, please check the existing issues to avoid duplicates.
 
@@ -36,7 +36,7 @@ Before creating bug reports, please check the existing issues to avoid duplicate
 - **Screenshots** if applicable
 - **Environment details** (OS, browser, Node.js version)
 
-### ✨ Suggesting Features
+### Suggesting Features
 
 Feature suggestions are welcome! Please:
 
@@ -45,7 +45,7 @@ Feature suggestions are welcome! Please:
 - **Consider implementation complexity**
 - **Be open to discussion**
 
-### 🔧 Code Contributions
+### Code Contributions
 
 1. **Fork** the repository
 2. **Create** a feature branch
@@ -53,40 +53,44 @@ Feature suggestions are welcome! Please:
 4. **Test** thoroughly
 5. **Submit** a pull request
 
-## 🛠 Development Setup
+## Development Setup
 
 ### Prerequisites
 
-- Node.js 18+
-- npm/yarn/pnpm
+- Node.js 22 or 24 and Chrome for local Lighthouse checks
+- npm
+- Read the [local setup](README.md#local-setup) and [verified check results](README.md#verified-checks--2026-10-20) before installing
 - Git
 
 ### Setup Steps
 
 1. **Clone your fork**
-   \`\`\`bash
-   git clone https://github.com/YOUR_USERNAME/portfolio-template.git
-   cd portfolio-template
-   \`\`\`
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/nextjs-tailwind-portfolio-template.git
+   cd nextjs-tailwind-portfolio-template
+   ```
 
 2. **Install dependencies**
-   \`\`\`bash
-   npm install
-   \`\`\`
+   ```bash
+   npm ci --ignore-scripts
+   ```
 
 3. **Start development server**
-   \`\`\`bash
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 
-4. **Run tests**
-   \`\`\`bash
-   npm run test
+4. **Run the available checks**
+   ```bash
    npm run type-check
    npm run lint
-   \`\`\`
+   npm test
+   npm run build
+   npm run lighthouse
+   ```
+   Linting and TypeScript validation are enforced during the build. Notification tests use Node's built-in runner; Lighthouse requires Chrome and keeps its reports local. Record actual failures rather than claiming all checks pass. See [commands and checks](README.md#commands-and-checks).
 
-## 🔄 Pull Request Process
+## Pull Request Process
 
 ### Before Submitting
 
@@ -98,7 +102,7 @@ Feature suggestions are welcome! Please:
 
 ### PR Template
 
-\`\`\`markdown
+```markdown
 ## Description
 Brief description of changes
 
@@ -121,9 +125,9 @@ Add screenshots here
 - [ ] Self-review completed
 - [ ] Documentation updated
 - [ ] No breaking changes (or documented)
-\`\`\`
+```
 
-## 📝 Style Guidelines
+## Style Guidelines
 
 ### TypeScript/JavaScript
 
@@ -135,7 +139,7 @@ Add screenshots here
 
 ### React Components
 
-\`\`\`typescript
+```typescript
 /**
  * Component description
  */
@@ -154,7 +158,7 @@ export function Component({ title, subtitle }: ComponentProps) {
     </div>
   )
 }
-\`\`\`
+```
 
 ### CSS/Styling
 
@@ -167,22 +171,22 @@ export function Component({ title, subtitle }: ComponentProps) {
 
 Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
-\`\`\`
+```
 feat: add new project card component
 fix: resolve mobile navigation issue
 docs: update installation instructions
 style: improve button hover states
 refactor: extract common utilities
 test: add unit tests for contact form
-\`\`\`
+```
 
-## 🐛 Issue Guidelines
+## Issue Guidelines
 
 ### Bug Reports
 
 Use the bug report template:
 
-\`\`\`markdown
+```markdown
 **Describe the bug**
 A clear description of the bug
 
@@ -199,13 +203,13 @@ If applicable, add screenshots
 - OS: [e.g. macOS, Windows]
 - Browser: [e.g. Chrome, Firefox]
 - Version: [e.g. 22]
-\`\`\`
+```
 
 ### Feature Requests
 
 Use the feature request template:
 
-\`\`\`markdown
+```markdown
 **Is your feature request related to a problem?**
 A clear description of the problem
 
@@ -217,9 +221,9 @@ Alternative solutions or features
 
 **Additional context**
 Any other context or screenshots
-\`\`\`
+```
 
-## 🏷 Labels
+## Labels
 
 We use labels to categorize issues and PRs:
 
@@ -230,7 +234,7 @@ We use labels to categorize issues and PRs:
 - `help wanted` - Extra attention needed
 - `question` - Further information requested
 
-## 🎯 Areas for Contribution
+## Areas for Contribution
 
 ### High Priority
 
@@ -252,28 +256,10 @@ We use labels to categorize issues and PRs:
 - **Animation improvements**
 - **Developer experience** improvements
 
-## 🚀 Release Process
+## Release Process
 
-1. **Version bump** in package.json
-2. **Update CHANGELOG.md**
-3. **Create release** on GitHub
-4. **Deploy to demo** site
+A release procedure has not been verified. Before publishing, resolve the [setup and deployment limitations](README.md#build-and-deployment), verify the build and user flows, and review the existing workflow's deployment job with the repository owner.
 
-## 📞 Getting Help
+## Getting Help
 
-- **GitHub Discussions** - For questions and ideas
-- **GitHub Issues** - For bugs and feature requests
-- **Email** - adeel.hashmi@example.com
-
-## 🙏 Recognition
-
-Contributors will be:
-
-- **Listed** in README.md
-- **Mentioned** in release notes
-- **Added** to contributors page
-- **Thanked** publicly on social media
-
----
-
-Thank you for contributing! 🎉
+Use [GitHub issues](https://github.com/adeel-hashmi/nextjs-tailwind-portfolio-template/issues) for questions, bugs, and feature requests.

@@ -83,7 +83,7 @@ export function WhatsAppChat() {
                     </div>
                     <div className="bg-muted/50 rounded-2xl rounded-tl-md p-3 max-w-[80%]">
                       <p className="text-sm text-foreground">
-                        👋 Hi there! I'm available to discuss your project needs.
+                        👋 Hi there! I&apos;m available to discuss your project needs.
                       </p>
                       <p className="text-xs text-muted-foreground mt-1">Usually responds within an hour</p>
                     </div>
@@ -94,7 +94,7 @@ export function WhatsAppChat() {
                       AH
                     </div>
                     <div className="bg-muted/50 rounded-2xl rounded-tl-md p-3 max-w-[80%]">
-                      <p className="text-sm text-foreground">Let's chat about:</p>
+                      <p className="text-sm text-foreground">Let&apos;s chat about:</p>
                       <ul className="text-sm text-muted-foreground mt-2 space-y-1">
                         <li>• Frontend development projects</li>
                         <li>• React/Next.js applications</li>

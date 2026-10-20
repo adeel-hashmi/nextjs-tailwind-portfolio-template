@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
@@ -135,7 +135,7 @@ export function SkillsSection() {
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20, scale: 0.9 },
     visible: {
       opacity: 1,
@@ -165,7 +165,7 @@ export function SkillsSection() {
           Skills & Technologies
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Technologies I've mastered through years of hands-on experience building production applications
+          Technologies I&apos;ve mastered through years of hands-on experience building production applications
         </p>
       </div>
 
@@ -200,7 +200,7 @@ export function SkillsSection() {
         animate="visible"
         className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
       >
-        {filteredSkills.map((skill, index) => (
+        {filteredSkills.map((skill) => (
           <motion.div key={skill.name} variants={itemVariants} className="group">
             <Card
               className="relative p-6 bg-card border border-border rounded-2xl transition-all duration-300 h-full flex flex-col justify-center items-center text-center

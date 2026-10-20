@@ -39,7 +39,7 @@ export function ContactForm() {
       } else {
         setStatus("error")
       }
-    } catch (error) {
+    } catch {
       setStatus("error")
     }
   }
@@ -55,7 +55,7 @@ export function ContactForm() {
         >
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
           <p className="text-gray-400">
-            Let's discuss how I can help bring your vision to life.
+            Let&apos;s discuss how I can help bring your vision to life.
             <br />
             <span className="text-sm">Usually respond within 2 hours</span>
           </p>
@@ -179,7 +179,7 @@ export function ContactForm() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center text-green-400 text-sm"
               >
-                Thanks! I'll get back to you within 2 hours.
+                Thanks! I&apos;ll get back to you within 2 hours.
               </motion.div>
             )}
           </form>

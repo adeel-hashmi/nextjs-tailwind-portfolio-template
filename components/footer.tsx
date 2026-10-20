@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Github, Linkedin, Mail, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -72,12 +73,16 @@ export function Footer() {
               </Badge>
               <Badge variant="outline">🌍 Open to Relocation</Badge>
               <div className="flex space-x-2 pt-2">
-                <img
+                <Image
+                  width={100}
+                  height={20}
                   src="https://img.shields.io/github/actions/workflow/status/username/repo/ci.yml?branch=main&label=Build&style=flat-square"
                   alt="Build Status"
                   className="h-5"
                 />
-                <img
+                <Image
+                  width={130}
+                  height={20}
                   src="https://img.shields.io/badge/Lighthouse-95%2B-brightgreen?style=flat-square"
                   alt="Lighthouse Score"
                   className="h-5"

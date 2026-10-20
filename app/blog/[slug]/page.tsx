@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { notFound } from "next/navigation"
+import { notFound, useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react"
@@ -203,7 +203,8 @@ Following these TypeScript best practices will help you build more robust and ma
   },
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogPostPage() {
+  const params = useParams<{ slug: string }>()
   const post = blogPosts[params.slug as keyof typeof blogPosts]
 
   if (!post) {

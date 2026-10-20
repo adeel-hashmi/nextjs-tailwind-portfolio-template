@@ -34,18 +34,18 @@ export function AboutSection() {
 
                 <div className="space-y-6">
                   <p className="text-lg leading-relaxed">
-                    👋 Hi, I'm Adeel — a frontend developer with 4+ years experience building scalable,
+                    👋 Hi, I&apos;m Adeel — a frontend developer with 4+ years experience building scalable,
                     performance-driven web apps. I specialize in React.js, Next.js, TypeScript, Redux Toolkit, Zustand,
                     Tailwind CSS.
                   </p>
 
                   <p className="text-lg leading-relaxed">
-                    I've built logistics dashboards with maps & Gantt charts, CMS dashboards, and government portals. I
+                    I&apos;ve built logistics dashboards with maps & Gantt charts, CMS dashboards, and government portals. I
                     focus on SSR, lazy loading, responsive design, and clean, maintainable code.
                   </p>
 
                   <p className="text-lg leading-relaxed">
-                    I'm open to remote or relocation opportunities in Germany/EU/UK/Canada.
+                    I&apos;m open to remote or relocation opportunities in Germany/EU/UK/Canada.
                   </p>
 
                   <div className="flex flex-wrap gap-2 pt-4">

@@ -123,7 +123,7 @@ export function HeroSection() {
                 className="group bg-white text-black hover:bg-gray-100 px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-2xl hover:shadow-white/25"
               >
                 <Sparkles className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                Let's Build Something Amazing
+                Let&apos;s Build Something Amazing
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
 
@@ -148,7 +148,7 @@ export function HeroSection() {
                 { icon: Github, href: "#", label: "GitHub" },
                 { icon: Linkedin, href: "#", label: "LinkedIn" },
                 { icon: Mail, href: "#", label: "Email" },
-              ].map(({ icon: Icon, href, label }, index) => (
+              ].map(({ icon: Icon, href, label }) => (
                 <motion.a
                   key={label}
                   href={href}

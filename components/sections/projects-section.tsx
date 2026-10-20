@@ -1,9 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -53,7 +54,7 @@ export function ProjectsSection() {
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -87,7 +88,9 @@ export function ProjectsSection() {
               <motion.div key={project.id} variants={itemVariants}>
                 <Card className="group h-full hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
                   <div className="relative overflow-hidden rounded-t-lg">
-                    <img
+                    <Image
+                  width={500}
+                  height={300}
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
