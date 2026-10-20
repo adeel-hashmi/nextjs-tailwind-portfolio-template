@@ -32,7 +32,7 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const headersList = headers()
+    const headersList = await headers()
     const userAgent = headersList.get("user-agent") || ""
     const forwarded = headersList.get("x-forwarded-for")
     const ip = forwarded ? forwarded.split(",")[0] : "unknown"
