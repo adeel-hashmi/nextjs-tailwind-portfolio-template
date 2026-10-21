@@ -88,6 +88,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
 
           {/* Metrics */}
+          {project.metrics && <p className="text-xs text-muted-foreground">Illustrative values</p>}
           {project.metrics && (
             <div className="flex items-center gap-4 text-sm">
               <div className="flex items-center gap-1 text-green-600 dark:text-green-400">
@@ -151,9 +152,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 size="sm"
                 variant="outline"
                 className="w-full bg-muted/50 hover:bg-muted text-foreground border-border/50 hover:border-border transition-all duration-200 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background group/btn"
-                aria-label={`View case study for ${project.title}`}
+                aria-label={`View sample case study for ${project.title}`}
               >
-                Case Study
+                Sample case study
                 <ArrowRight className="w-3 h-3 ml-2 group-hover/btn:translate-x-1 transition-transform" />
               </Button>
             </Link>

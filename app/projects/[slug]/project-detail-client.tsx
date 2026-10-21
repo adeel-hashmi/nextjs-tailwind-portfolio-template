@@ -30,7 +30,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+      <nav className="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <Link
             href="/projects"
@@ -42,7 +42,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
         </div>
       </nav>
 
-      <main className="pt-20">
+      <main className="pt-8">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
           <div className="max-w-4xl mx-auto px-6 py-12">
@@ -66,6 +66,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                   <div className="flex-1 space-y-2">
                     <h1 className="text-4xl font-bold text-foreground">{project.title}</h1>
                     <p className="text-xl text-muted-foreground leading-relaxed">{project.description}</p>
+                    <p className="text-sm text-muted-foreground">Fictional case study. Roles, team details and results below are illustrative; no live application or separate project source is supplied.</p>
                   </div>
                 </div>
 
@@ -169,7 +170,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
               <Card className="text-center">
                 <CardHeader className="pb-3">
                   <TrendingUp className="w-6 h-6 mx-auto text-primary" />
-                  <CardTitle className="text-sm font-medium">Impact</CardTitle>
+                  <CardTitle className="text-sm font-medium">Illustrative impact</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <p className="text-sm text-muted-foreground">{project.metrics.impact}</p>
@@ -352,20 +353,19 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="text-center py-12 bg-muted/30 rounded-2xl"
             >
-              <h3 className="text-2xl font-bold mb-4">Interested in Working Together?</h3>
+              <h3 className="text-2xl font-bold mb-4">Explore the template</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                I&apos;m always open to discussing new opportunities and exciting projects. Let&apos;s build something amazing
-                together.
+                Use these layouts to document your own work, with supported claims and working project links.
                    </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link href="/#contact">
                   <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                    Get in Touch
+                    Template setup
                   </Button>
                 </Link>
                 <Link href="/projects">
                   <Button size="lg" variant="outline">
-                    View More Projects
+                    More sample projects
                   </Button>
                 </Link>
               </div>

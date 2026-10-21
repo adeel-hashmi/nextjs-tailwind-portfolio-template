@@ -39,10 +39,10 @@ export const APP_CONSTANTS = {
 
   // SEO
   SEO: {
-    DEFAULT_TITLE: "Senior Frontend Engineer | React, Next.js, TypeScript",
-    TITLE_TEMPLATE: "%s | Adeel Hashmi",
+    DEFAULT_TITLE: "Portfolio template demo",
+    TITLE_TEMPLATE: "%s | Portfolio template",
     DEFAULT_DESCRIPTION:
-      "Senior Frontend Engineer with 4+ years experience building scalable applications for 100K+ users.",
+      "Next.js, TypeScript and Tailwind CSS portfolio starter with illustrative sample content.",
   },
 } as const
 
