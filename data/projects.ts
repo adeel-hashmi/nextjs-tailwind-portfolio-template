@@ -29,12 +29,13 @@ export interface Project {
   gallery?: string[]
 }
 
+// Fictional case-study content for demonstrating the template layouts.
 export const projects: Project[] = [
   {
     id: "1",
     slug: "logistics-dashboard",
     title: "Enterprise Logistics Dashboard",
-    description: "Reduced delivery times by 35% with real-time tracking dashboard serving 10K+ daily users",
+    description: "Sample logistics case study illustrating a fleet-tracking dashboard layout.",
     longDescription: `A comprehensive logistics management platform that revolutionized how the company tracks and manages their fleet operations. Built with React, TypeScript, and real-time WebSocket connections, this dashboard processes over 50,000 shipments monthly while maintaining 99.9% uptime.
 
 The platform integrates with multiple third-party APIs, provides real-time GPS tracking, and features an intuitive drag-and-drop interface for route optimization. The system has directly contributed to €2M+ in cost savings through improved efficiency and reduced delivery times.`,
@@ -57,8 +58,6 @@ The platform integrates with multiple third-party APIs, provides real-time GPS t
     ],
     icon: "📊",
     featured: true,
-    liveUrl: "https://logistics-demo.example.com",
-    githubUrl: "https://github.com/adeelhashmi/logistics-dashboard",
     metrics: {
       users: "10K+ daily",
       performance: "60% faster",
@@ -104,7 +103,7 @@ The platform integrates with multiple third-party APIs, provides real-time GPS t
     id: "2",
     slug: "cms-dashboard",
     title: "Self-Service CMS Platform",
-    description: "Server-side rendered CMS with role-based permissions serving 50K+ content pieces",
+    description: "Sample content-management case study illustrating an editorial workflow.",
     longDescription: `A modern content management system built with Next.js that empowers non-technical users to create, manage, and publish content across multiple channels. The platform features a sophisticated role-based permission system, real-time collaboration tools, and automated content workflows.
 
 Built with server-side rendering for optimal SEO performance, the CMS handles over 50,000 content pieces and serves 5,000+ daily active editors. The system includes advanced features like content versioning, automated publishing workflows, and comprehensive analytics.`,
@@ -118,8 +117,6 @@ Built with server-side rendering for optimal SEO performance, the CMS handles ov
     tags: ["Next.js", "TypeScript", "SSR", "Auth", "Tailwind CSS", "Zustand", "Prisma", "PostgreSQL"],
     icon: "⚙️",
     featured: true,
-    liveUrl: "https://cms-demo.example.com",
-    githubUrl: "https://github.com/adeelhashmi/cms-dashboard",
     metrics: {
       users: "5K+ editors",
       performance: "40% faster",
@@ -164,7 +161,7 @@ Built with server-side rendering for optimal SEO performance, the CMS handles ov
     id: "3",
     slug: "government-portals",
     title: "Government Digital Portals",
-    description: "Multiple government portals processing 100K+ applications with 99.9% uptime",
+    description: "Sample public-service portal case study illustrating application workflows.",
     longDescription: `A suite of government portals built for Pakistani regulatory bodies including PSEB (Punjab School Education Board), ASF (Airport Security Force), and OGRA (Oil and Gas Regulatory Authority). These mission-critical applications process over 100,000 citizen applications monthly with strict security and accessibility requirements.
 
 Each portal features complex multi-step forms, document management systems, payment integration, and real-time application tracking. The systems are built to handle high traffic loads during peak application periods while maintaining 99.9% uptime and full accessibility compliance.`,

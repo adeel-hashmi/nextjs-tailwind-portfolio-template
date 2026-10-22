@@ -162,10 +162,10 @@ export function SkillsSection() {
           id="skills-heading"
           className="text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent"
         >
-          Skills & Technologies
+          Sample skills & technologies
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Technologies I&apos;ve mastered through years of hands-on experience building production applications
+          Example categories and proficiency values for the layout. Replace them with skills you can demonstrate.
         </p>
       </div>
 
@@ -259,22 +259,7 @@ export function SkillsSection() {
         transition={{ delay: 0.5 }}
         className="text-center pt-8"
       >
-        <div className="inline-flex items-center gap-6 px-6 py-3 bg-muted/30 border border-border/50 rounded-full">
-          <div className="text-sm">
-            <span className="font-semibold text-primary">{skills.length}</span>
-            <span className="text-muted-foreground ml-1">Technologies</span>
-          </div>
-          <div className="w-px h-4 bg-border/30" />
-          <div className="text-sm">
-            <span className="font-semibold text-primary">4+</span>
-            <span className="text-muted-foreground ml-1">Years Experience</span>
-          </div>
-          <div className="w-px h-4 bg-border/30" />
-          <div className="text-sm">
-            <span className="font-semibold text-primary">50+</span>
-            <span className="text-muted-foreground ml-1">Projects Built</span>
-          </div>
-        </div>
+        <p className="text-sm text-muted-foreground">These proficiency values are sample data, not an assessment.</p>
       </motion.div>
     </motion.section>
   )

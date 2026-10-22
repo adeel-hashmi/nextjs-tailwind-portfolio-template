@@ -12,7 +12,7 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+      <nav className="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <Link
             href="/"
@@ -24,13 +24,12 @@ export default function ProjectsPage() {
         </div>
       </nav>
 
-      <main className="pt-20">
+      <main className="pt-8">
         <div className="max-w-4xl mx-auto px-6 py-16 space-y-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h1 className="text-4xl font-bold mb-4">Featured Projects</h1>
+            <h1 className="text-4xl font-bold mb-4">Sample projects</h1>
             <p className="text-muted-foreground text-lg mb-8">
-              A collection of projects showcasing my expertise in frontend development, from enterprise dashboards to
-              government portals.
+              Fictional case studies demonstrating project layouts. The examples are not deployed applications or verified client outcomes.
             </p>
           </motion.div>
 

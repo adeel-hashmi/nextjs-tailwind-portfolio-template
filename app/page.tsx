@@ -2,16 +2,15 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { SkillsSection } from "@/components/skills-section"
 import { ProjectCard } from "@/components/project-card"
 import { FAQSection } from "@/components/faq-section"
-import { FeedbackSection } from "@/components/feedback-section"
-import { VisitorCount, VisitorCountCompact, AnalyticsBadge } from "@/components/visitor-count"
-import { Github, Linkedin, Mail, Calendar, Download, Globe, ArrowRight, Sparkles } from "lucide-react"
+import { Github, Download, ArrowRight } from "lucide-react"
+import { getAllProjects } from "@/data/projects"
+import { siteConfig } from "@/lib/config"
 
 const workExperience = [
   {
@@ -44,65 +43,7 @@ const workExperience = [
   },
 ]
 
-const projects = [
-  {
-    id: "1",
-    slug: "logistics-dashboard",
-    title: "Logistics Dashboard",
-    description: "Reduced delivery times by 35% with real-time tracking dashboard serving 10K+ daily users",
-    tags: ["React.js", "TypeScript", "Leaflet.js", "WebSocket", "Redux Toolkit", "Canvas API"],
-    icon: "📊",
-    featured: true,
-    liveUrl: "https://logistics-demo.example.com",
-    githubUrl: "https://github.com/adeelhashmi/logistics-dashboard",
-    metrics: {
-      users: "10K+ daily",
-      performance: "60% faster",
-      impact: "€2M+ savings",
-    },
-  },
-  {
-    id: "2",
-    slug: "cms-dashboard",
-    title: "CMS Dashboard",
-    description: "Server-side rendered CMS with role-based permissions serving 50K+ content pieces",
-    tags: ["Next.js", "TypeScript", "SSR", "Auth", "Tailwind CSS", "Zustand"],
-    icon: "⚙️",
-    featured: true,
-    liveUrl: "https://cms-demo.example.com",
-    githubUrl: "https://github.com/adeelhashmi/cms-dashboard",
-    metrics: {
-      users: "5K+ editors",
-      performance: "40% faster",
-      impact: "80% efficiency",
-    },
-  },
-  {
-    id: "3",
-    slug: "government-portals",
-    title: "Government Portals",
-    description: "Multiple government portals processing 100K+ applications with 99.9% uptime",
-    tags: [
-      "React.js",
-      "Laravel Integration",
-      "REST APIs",
-      "Forms",
-      "Charts",
-      "Responsive",
-      "Accessibility",
-      "Security",
-    ],
-    icon: "🏛️",
-    featured: true,
-    liveUrl: undefined,
-    githubUrl: undefined,
-    metrics: {
-      users: "100K+ citizens",
-      performance: "50% faster",
-      impact: "99.9% uptime",
-    },
-  },
-]
+const projects = getAllProjects()
 
 const blogPosts = [
   {
@@ -125,7 +66,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       {/* Glass Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+      <nav className="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
         <div className="max-w-2xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <motion.div
@@ -133,10 +74,10 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               className="text-xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent"
             >
-              AH
+              PT
             </motion.div>
 
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-6">
               <a
                 href="#projects"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm"
@@ -150,12 +91,6 @@ export default function Home() {
                 FAQ
               </a>
               <a
-                href="#feedback"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm"
-              >
-                Feedback
-              </a>
-              <a
                 href="#blog"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm"
               >
@@ -165,7 +100,7 @@ export default function Home() {
                 href="#contact"
                 className="px-4 py-2 bg-muted/50 hover:bg-muted text-foreground rounded-full text-sm transition-all duration-200 border border-border/50 hover:border-border focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
               >
-                Contact
+                Setup
               </a>
               <ThemeToggle />
             </div>
@@ -173,9 +108,9 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="pt-20">
+      <main className="pt-8">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <section className="min-h-[calc(100svh-9rem)] py-12 flex items-center justify-center relative overflow-hidden">
           {/* Animated Background Orbs */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
@@ -212,30 +147,13 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="space-y-8"
             >
-              {/* Status Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="flex justify-center"
-              >
-                <Badge className="px-4 py-2 bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 text-green-600 dark:text-green-400 transition-all duration-300">
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-                    className="w-2 h-2 bg-green-500 rounded-full mr-2"
-                  />
-                  Available for hire • Remote & EU Relocation
-                </Badge>
-              </motion.div>
-
               {/* Main Hero Content */}
               <div className="text-center space-y-6">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="flex items-center justify-center gap-6"
+                  className="flex flex-col sm:flex-row items-center justify-center gap-6"
                 >
                   <div className="relative">
                     <motion.div
@@ -244,12 +162,12 @@ export default function Home() {
                       className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 rounded-full blur-sm opacity-75"
                     />
                     <div className="relative w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl font-bold border border-border/20">
-                      AH
+                      YN
                     </div>
                   </div>
                   <div className="text-left">
                     <h1 className="text-5xl font-bold bg-gradient-to-r from-foreground via-foreground/90 to-foreground/70 bg-clip-text text-transparent">
-                      Adeel Hashmi
+                      Your Name
                     </h1>
                     <motion.div
                       initial={{ width: 0 }}
@@ -266,41 +184,38 @@ export default function Home() {
                   transition={{ delay: 0.5 }}
                   className="text-xl text-muted-foreground leading-relaxed max-w-2xl"
                 >
-                  Senior Frontend Engineer crafting <span className="text-foreground font-semibold">pixel-perfect</span>{" "}
-                  experiences with <span className="text-blue-500">React</span>,{" "}
+                  Example developer profile using a portfolio built with <span className="text-blue-500">React</span>,{" "}
                   <span className="text-foreground bg-muted px-2 py-1 rounded">Next.js</span>, and{" "}
                   <span className="text-blue-600">TypeScript</span>.
                   <br />
                   <span className="text-sm text-muted-foreground/70 mt-2 block">
-                    4+ years • 50+ projects • Available for EU relocation
+                    Replace this profile and the sample content with your own verified experience.
                   </span>
                 </motion.p>
-
-                {/* Visitor Count in Hero */}
-                <div className="flex justify-center">
-                  <VisitorCountCompact />
-                </div>
 
                 {/* CTA Buttons */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
-                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                  className="flex flex-col gap-4 justify-center items-center"
                 >
-                  <Button className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-primary/25 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
-                    <Sparkles className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                    Let&apos;s Build Something Amazing
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <Button asChild className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-primary/25 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+                    <a href="#projects">
+                      Explore sample projects
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </a>
                   </Button>
 
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap justify-center gap-2">
                     <Button
+                      disabled
+                      aria-describedby="resume-note"
                       variant="outline"
                       className="bg-muted/50 hover:bg-muted border border-border/50 hover:border-border px-6 py-3 rounded-full transition-all duration-300 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
                     >
                       <Download className="w-4 h-4 mr-2" />
-                      Resume
+                      Resume unavailable
                     </Button>
 
                     <Button
@@ -308,40 +223,15 @@ export default function Home() {
                       asChild
                       className="bg-muted/50 hover:bg-muted border border-border/50 hover:border-border px-6 py-3 rounded-full transition-all duration-300 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
                     >
-                      <a href="https://github.com/adeelhashmi" target="_blank" rel="noopener noreferrer">
+                      <a href={siteConfig.repository} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4 mr-2" />
-                        GitHub
+                        Template source
                       </a>
                     </Button>
                   </div>
                 </motion.div>
 
-                {/* Social Links */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.9 }}
-                  className="flex justify-center gap-4 pt-8"
-                >
-                  {[
-                    { icon: Github, href: "https://github.com/adeelhashmi", label: "GitHub" },
-                    { icon: Linkedin, href: "https://linkedin.com/in/adeelhashmi", label: "LinkedIn" },
-                    { icon: Mail, href: "mailto:adeel.hashmi@example.com", label: "Email" },
-                  ].map(({ icon: Icon, href, label }) => (
-                    <motion.a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="p-3 bg-muted/50 hover:bg-muted border border-border/50 hover:border-border rounded-2xl transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
-                      aria-label={`Visit my ${label} profile`}
-                    >
-                      <Icon className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-                    </motion.a>
-                  ))}
-                </motion.div>
+                <p id="resume-note" className="text-sm text-muted-foreground">No resume is included in this template demo.</p>
               </div>
             </motion.div>
           </div>
@@ -356,49 +246,11 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <h2 className="text-2xl font-bold">About</h2>
+            <h2 className="text-2xl font-bold">About this template</h2>
             <div className="text-muted-foreground space-y-4 leading-relaxed">
-              <p>
-                👋 Hi, I&apos;m Adeel — a senior frontend engineer who transforms complex business requirements into
-                intuitive user experiences. My code powers applications used by{" "}
-                <span className="text-foreground font-semibold">100K+ users daily</span> across logistics, government,
-                and SaaS platforms.
-              </p>
-              <p>
-                I specialize in{" "}
-                <Link
-                  href="#"
-                  className="text-foreground underline hover:text-foreground/80 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm"
-                >
-                  React.js
-                </Link>
-                ,{" "}
-                <Link
-                  href="#"
-                  className="text-foreground underline hover:text-foreground/80 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm"
-                >
-                  Next.js
-                </Link>
-                ,{" "}
-                <Link
-                  href="#"
-                  className="text-foreground underline hover:text-foreground/80 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm"
-                >
-                  TypeScript
-                </Link>
-                , and modern frontend architecture. I focus on performance, scalability, and pixel-perfect
-                implementations.
-              </p>
-              <p>
-                Currently open to remote opportunities or relocation to{" "}
-                <Link
-                  href="#"
-                  className="text-foreground underline hover:text-foreground/80 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm"
-                >
-                  Germany/EU/UK/Canada
-                </Link>
-                . Let&apos;s build something amazing together.
-              </p>
+              <p>Explore a portfolio layout with project pages, a filterable skills section, sample articles and a theme switcher.</p>
+              <p>The employers, roles, dates, proficiency levels and project results are fictional examples. Replace them with your own supported content before publishing.</p>
+              <p>Setup instructions and integration limitations are documented in the repository README.</p>
             </div>
           </motion.section>
 
@@ -410,7 +262,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-6"
           >
-            <h2 className="text-2xl font-bold">Work Experience</h2>
+            <h2 className="text-2xl font-bold">Sample work experience</h2>
             <div className="space-y-4">
               {workExperience.map((job, index) => (
                 <motion.div
@@ -452,7 +304,7 @@ export default function Home() {
             className="space-y-6"
           >
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold">Featured Projects</h2>
+              <h2 className="text-2xl font-bold">Sample projects</h2>
               <Link
                 href="/projects"
                 className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm"
@@ -472,11 +324,6 @@ export default function Home() {
             <FAQSection />
           </section>
 
-          {/* Feedback Section */}
-          <section id="feedback">
-            <FeedbackSection />
-          </section>
-
           {/* Blog */}
           <motion.section
             id="blog"
@@ -487,7 +334,7 @@ export default function Home() {
             className="space-y-6"
           >
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold">Latest Posts</h2>
+              <h2 className="text-2xl font-bold">Sample articles</h2>
               <Link
                 href="/blog"
                 className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm"
@@ -533,37 +380,13 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="space-y-6"
           >
-            <h2 className="text-2xl font-bold">Ready to Start Your Project?</h2>
-            <p className="text-muted-foreground">
-              I&apos;m always open to discussing new opportunities and exciting projects. Let&apos;s build something amazing
-              together!
-                 </p>
-            <div className="flex flex-wrap gap-4">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
-                <Mail className="w-4 h-4 mr-2" />
-                Get In Touch
-              </Button>
-              <Button
-                variant="outline"
-                asChild
-                className="bg-muted/50 hover:bg-muted border border-border/50 hover:border-border focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
-              >
-                <a href="https://linkedin.com/in/adeelhashmi" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="w-4 h-4 mr-2" />
-                  LinkedIn
-                </a>
-              </Button>
-              <Button
-                variant="outline"
-                asChild
-                className="bg-muted/50 hover:bg-muted border border-border/50 hover:border-border focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
-              >
-                <a href="https://github.com/adeelhashmi" target="_blank" rel="noopener noreferrer">
-                  <Github className="w-4 h-4 mr-2" />
-                  GitHub
-                </a>
-              </Button>
-            </div>
+            <h2 className="text-2xl font-bold">Use this template</h2>
+            <p className="text-muted-foreground">Start with the repository instructions, replace the sample content and verify your links before publishing. Contact and feedback delivery are not configured in this demo.</p>
+            <Button asChild>
+              <a href={`${siteConfig.repository}#readme`} target="_blank" rel="noopener noreferrer">
+                Read setup instructions <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+            </Button>
           </motion.section>
 
           {/* Footer with Analytics */}
@@ -574,40 +397,9 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="pt-8 border-t border-border/50 space-y-6"
           >
-            {/* Visitor Count */}
-            <div className="flex justify-center">
-              <VisitorCount />
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                {[
-                  { icon: Globe, href: "https://adeelhashmi.dev", label: "Website" },
-                  { icon: Github, href: "https://github.com/adeelhashmi", label: "GitHub" },
-                  { icon: Linkedin, href: "https://linkedin.com/in/adeelhashmi", label: "LinkedIn" },
-                  { icon: Mail, href: "mailto:adeel.hashmi@example.com", label: "Email" },
-                  { icon: Calendar, href: "https://cal.com/adeelhashmi", label: "Schedule a call" },
-                ].map(({ icon: Icon, href, label }) => (
-                  <Button
-                    key={label}
-                    variant="ghost"
-                    size="icon"
-                    asChild
-                    className="text-muted-foreground hover:text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
-                  >
-                    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
-                      <Icon className="w-4 h-4" />
-                    </a>
-                  </Button>
-                ))}
-              </div>
-
-              <AnalyticsBadge />
-            </div>
-
-            <div className="text-center text-sm text-muted-foreground/70">
-              © 2024 Adeel Hashmi. Built with Next.js & Tailwind CSS.
-            </div>
+            <p className="text-center text-sm text-muted-foreground">
+              Template by <a href="https://github.com/adeel-hashmi" className="underline underline-offset-4">Adeel Hashmi</a>. Built with Next.js and Tailwind CSS.
+            </p>
           </motion.footer>
         </div>
       </main>

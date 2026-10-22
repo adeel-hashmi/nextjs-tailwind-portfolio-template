@@ -4,7 +4,8 @@ import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
-import { WhatsAppChat } from "@/components/whatsapp-chat"
+import { TemplateNotice } from "@/components/template-notice"
+import { siteConfig } from "@/lib/config"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,49 +20,27 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Adeel Hashmi - Senior Frontend Engineer",
-    template: "%s | Adeel Hashmi",
+    default: "Portfolio template demo",
+    template: "%s | Portfolio template",
   },
-  description:
-    "Senior Frontend Engineer specializing in React.js, Next.js, TypeScript. 4+ years building scalable applications for 100K+ users. Available for EU relocation.",
-  keywords: [
-    "Senior Frontend Engineer",
-    "React.js Expert",
-    "Next.js Developer",
-    "TypeScript Specialist",
-    "EU Relocation",
-    "Remote Developer",
-  ],
-  authors: [{ name: "Adeel Hashmi" }],
-  creator: "Adeel Hashmi",
+  description: siteConfig.description,
+  keywords: ["Next.js", "TypeScript", "Tailwind CSS", "portfolio template"],
+  authors: [{ name: "Adeel Hashmi", url: "https://github.com/adeel-hashmi" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://adeelhashmi.dev",
-    title: "Adeel Hashmi - Senior Frontend Engineer",
-    description:
-      "Senior Frontend Engineer building scalable applications for 100K+ users. React.js, Next.js, TypeScript expert available for EU relocation.",
-    siteName: "Adeel Hashmi Portfolio",
+    url: siteConfig.url,
+    title: "Portfolio template demo",
+    description: siteConfig.description,
+    siteName: "Next.js portfolio template",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Adeel Hashmi - Senior Frontend Engineer",
-    description:
-      "Senior Frontend Engineer building scalable applications for 100K+ users. React.js, Next.js, TypeScript expert.",
+    card: "summary",
+    title: "Portfolio template demo",
+    description: siteConfig.description,
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -73,8 +52,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <TemplateNotice />
           {children}
-          <WhatsAppChat />
           <Toaster />
         </ThemeProvider>
       </body>
